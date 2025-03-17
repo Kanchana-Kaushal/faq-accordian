@@ -6,6 +6,7 @@ import iconPlus from "./assets/icon-plus.svg";
 import iconMinus from "./assets/icon-minus.svg";
 import mobileViewCoverImage from "./assets/backgroundPatternMobile.svg";
 import desktopViewCoverImage from "./assets/backgroundPatternDesktop.svg";
+import starIcon from "./assets/iconStar.svg";
 
 function App() {
   const [faq, setFaqArray] = useState(faqArray);
@@ -65,7 +66,7 @@ function App() {
         <div className="z-10 w-9/10 rounded-lg bg-white p-6 shadow-lg md:max-w-lg">
           <div className="mb-4 flex items-center gap-4">
             <img
-              src="../src/assets/iconStar.svg"
+              src={starIcon}
               alt="icon of a star"
               className="size-5 md:size-7"
             />
