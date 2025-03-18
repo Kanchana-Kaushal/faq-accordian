@@ -1,5 +1,6 @@
 import { useState } from "react";
 import faqArray from "./assets/faqs";
+import { AnimatePresence, motion } from "motion/react";
 
 //image imports
 import iconPlus from "./assets/icon-plus.svg";
@@ -34,13 +35,24 @@ function App() {
           <img
             src={item.answerShown ? iconMinus : iconPlus}
             alt={item.answerShown ? "collapse button" : "show button"}
+            aria-expanded={item.answerShown}
             className="cursor-pointer"
             onClick={() => toggleAnswer(item)}
           />
         </div>
-        <p className="text-Grayish-purple text-sm font-semibold md:text-lg">
-          {item.answerShown ? item.answer : undefined}
-        </p>
+
+        <AnimatePresence>
+          {item.answerShown && (
+            <motion.p
+              className="text-Grayish-purple text-sm font-semibold md:text-lg"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              transition={{ type: "spring", duration: 0.5 }}
+            >
+              {item.answer}
+            </motion.p>
+          )}
+        </AnimatePresence>
 
         {faq.length - 1 === index ? undefined : (
           <hr className="text-Dark-purple opacity-20" />
